@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>946574922276-d5fhvfc04c7npi106q0dg6uip4lbmtfl.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.946574922276-d5fhvfc04c7npi106q0dg6uip4lbmtfl</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>946574922276-anii7g7o0l96n5o8sucu0ups7eoejpvk.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyAQmf3Gzuj_QECCWnsHATQ6MTVIpYXA4m0</string>
+	<key>GCM_SENDER_ID</key>
+	<string>946574922276</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.example.chatApp</string>
+	<key>PROJECT_ID</key>
+	<string>chatbox-messenger-e1c01</string>
+	<key>STORAGE_BUCKET</key>
+	<string>chatbox-messenger-e1c01.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:946574922276:ios:c9be9349034f0e5d7bbeb1</string>
+	<key>DATABASE_URL</key>
+	<string>https://chatbox-messenger-e1c01-default-rtdb.firebaseio.com</string>
+</dict>
+</plist>
