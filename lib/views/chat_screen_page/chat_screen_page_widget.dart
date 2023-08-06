@@ -30,7 +30,7 @@ class _ChatScreenPageWidgedState extends State<ChatScreenPageWidged> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey,
+      backgroundColor: Colors.white,
       appBar: AppBar(
         elevation: 0,
         automaticallyImplyLeading: false,

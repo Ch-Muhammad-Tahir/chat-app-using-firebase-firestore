@@ -32,8 +32,7 @@ class ChatListTileView extends StatelessWidget {
                   Stack(children: [
                     CircleAvatar(
                         backgroundColor: Colors.green.shade100,
-                        backgroundImage:
-                            NetworkImage(AppCommonStrings.dummyImage),
+                        backgroundImage: NetworkImage(user.imageUrl),
                         radius: GetScreenSize.getScreenHeight(context) * 0.035),
                     Positioned(
                         right: -7,
@@ -65,7 +64,7 @@ class ChatListTileView extends StatelessWidget {
                                         0.050,
                               ),
                               overflow: TextOverflow.ellipsis),
-                          Text("Perfert will Check it",
+                          Text(AppCommonStrings.lastMsg,
                               style: TextStyle(
                                   color: Colors.grey.shade700,
                                   fontSize:
@@ -80,7 +79,7 @@ class ChatListTileView extends StatelessWidget {
                   Align(
                     alignment: Alignment.topCenter,
                     child: Text(
-                      "09:12 AM",
+                      AppCommonStrings.time,
                       style: TextStyle(
                           fontSize:
                               GetScreenSize.getScreenWidth(context) * 0.030),

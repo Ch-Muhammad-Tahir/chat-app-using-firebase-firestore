@@ -1,7 +1,9 @@
+import 'dart:io';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-
+import 'package:firebase_storage/firebase_storage.dart';
 import '../utils/common_functions.dart';
 
 class FirebaseManager {
@@ -47,14 +49,15 @@ class FirebaseManager {
     return false;
   }
 
-  static Future<bool> storeUserDataOnFirebase({
-    required String userName,
-  }) async {
+  static Future<bool> storeUserDataOnFirebase(
+      {required String userName, required File image}) async {
+    var imgPath = await storeImageOnFirebaseCloud(image);
     var collection = FirebaseFirestore.instance.collection("users");
     await collection.doc(currentUserUid).set({
       "userName": userName,
       "uId": currentUserUid,
-      "phoneNumber": userPhoneNumber
+      "phoneNumber": userPhoneNumber,
+      "imageUrl": imgPath
     });
     if (collection.doc(currentUserUid).id == currentUserUid) {
       return true;
@@ -85,6 +88,16 @@ class FirebaseManager {
       "messageText": message,
       "timeStamp": FieldValue.serverTimestamp(),
     });
+  }
+
+  static Future<dynamic> storeImageOnFirebaseCloud(File imagePath) async {
+    final Reference storageRefrence = FirebaseStorage.instance
+        .ref()
+        .child("images/${FirebaseManager.currentUserUid}.png");
+    final UploadTask uploadTask = storageRefrence.putFile(imagePath);
+    final TaskSnapshot snapshot = await uploadTask;
+    final imgUrl = await snapshot.ref.getDownloadURL();
+    return imgUrl;
   }
 
   static Stream<QuerySnapshot> getMessages(String userId, String otherUserId) {

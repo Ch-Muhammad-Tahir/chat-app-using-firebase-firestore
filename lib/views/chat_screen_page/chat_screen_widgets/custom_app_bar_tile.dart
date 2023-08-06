@@ -23,7 +23,7 @@ class CustomAppBarTile extends StatelessWidget {
           ),
         ),
         CircleAvatar(
-          backgroundImage: NetworkImage(AppCommonStrings.dummyImage),
+          backgroundImage: NetworkImage(receiverUser.imageUrl),
           maxRadius: 20,
         ),
         const CustomSizedBox(
