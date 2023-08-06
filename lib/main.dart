@@ -3,7 +3,7 @@ import 'package:chat_app/providers/authentication_provider.dart';
 import 'package:chat_app/providers/chat_provider.dart';
 import 'package:chat_app/views/authentication/authentication_screen_widget.dart';
 import 'package:chat_app/views/authentication/otp_verify_screen.dart';
-import 'package:chat_app/views/chat_screen_page/chat_screen_widgets/message_tile_view.dart';
+import 'package:chat_app/views/chat_screen_page/chat_screen_widgets/message_bubble_tile_view.dart';
 import 'package:chat_app/views/home_page/home_screen_widget.dart';
 import 'package:chat_app/views/on_boarding_screen/on_boarding_screen_widget.dart';
 import 'package:provider/provider.dart';

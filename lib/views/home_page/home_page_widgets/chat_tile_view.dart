@@ -1,4 +1,5 @@
 import 'package:chat_app/models/user.dart';
+import 'package:chat_app/utils/app_strings.dart';
 import 'package:chat_app/utils/media_query.dart';
 import 'package:chat_app/widgets/custom_sized_box.dart';
 import 'package:flutter/material.dart';
@@ -31,8 +32,8 @@ class ChatListTileView extends StatelessWidget {
                   Stack(children: [
                     CircleAvatar(
                         backgroundColor: Colors.green.shade100,
-                        backgroundImage: NetworkImage(
-                            "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=387&q=80"),
+                        backgroundImage:
+                            NetworkImage(AppCommonStrings.dummyImage),
                         radius: GetScreenSize.getScreenHeight(context) * 0.035),
                     Positioned(
                         right: -7,
