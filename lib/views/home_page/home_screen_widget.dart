@@ -1,4 +1,6 @@
 import 'package:chat_app/providers/authentication_provider.dart';
+import 'package:chat_app/views/chat_screen_page/chat_screen_page_widget.dart';
+import 'package:chat_app/views/home_page/home_page_widgets/chat_tile_view.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -27,9 +29,16 @@ class _HomePageScreenWidgetState extends State<HomePageScreenWidget> {
         builder: (context, provider, child) {
           return ListView.separated(
               itemBuilder: (context, index) {
-                return ListTile(
-                  title: Text(provider.users[index].name),
-                  subtitle: Text(provider.users[index].phoneNumber),
+                return ChatListTileView(
+                  user: provider.users[index],
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => ChatScreenPageWidged(
+                                  reciverUser: provider.users[index],
+                                )));
+                  },
                 );
               },
               separatorBuilder: (context, index) {

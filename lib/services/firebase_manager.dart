@@ -22,9 +22,6 @@ class FirebaseManager {
             },
             codeSent: (String verificationID, int? token) {
               verficationID = verificationID;
-
-              // Navigator.push(context,
-              //     MaterialPageRoute(builder: (context) => OTPVerifyScreenWidget()));
             },
             codeAutoRetrievalTimeout: (e) {})
         .then((value) => isValidNumber = true);
@@ -72,13 +69,43 @@ class FirebaseManager {
     CollectionReference dBCollectionReference =
         FirebaseFirestore.instance.collection(collectionName);
     return dBCollectionReference;
-    // await dBCollectionReference.snapshots().listen((event) {
-    //   users.clear();
-    //   for (final doc in event.docs) {
-    //     if (!doc.data().toString().contains(currentUserUid)) {
-    //       print(doc.data());
-    //       users.add(ChatUser.fromJosn(doc.data() as Map<String, dynamic>));
-    //     }
-    //   }
+  }
+
+  static Future<void> sendMessage(
+      {required String message,
+      required String reciverId,
+      required String chatRoomId}) async {
+    var chatRoomCollection = FirebaseFirestore.instance
+        .collection("chats")
+        .doc(chatRoomId)
+        .collection("messages");
+    chatRoomCollection.add({
+      "senderUid": currentUserUid,
+      "reciverUid": reciverId,
+      "messageText": message,
+      "timeStamp": FieldValue.serverTimestamp(),
+    });
+  }
+
+  static Stream<QuerySnapshot> getMessages(String userId, String otherUserId) {
+    FirebaseFirestore firestore = FirebaseFirestore.instance;
+    List<String> ids = [userId, otherUserId];
+    ids.sort();
+    String chatroomId = ids.join("_");
+
+    return firestore
+        .collection("chats")
+        .doc(chatroomId)
+        .collection("messages")
+        .orderBy("timeStamp", descending: false)
+        .snapshots();
+  }
+
+  static CollectionReference getChatMessages({required String chatRoomId}) {
+    CollectionReference messagesCollectionReference = FirebaseFirestore.instance
+        .collection("chats")
+        .doc(chatRoomId)
+        .collection("messages");
+    return messagesCollectionReference;
   }
 }
