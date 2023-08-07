@@ -57,7 +57,8 @@ class FirebaseManager {
       "userName": userName,
       "uId": currentUserUid,
       "phoneNumber": userPhoneNumber,
-      "imageUrl": imgPath
+      "imageUrl": imgPath,
+      "isOnline": true
     });
     if (collection.doc(currentUserUid).id == currentUserUid) {
       return true;

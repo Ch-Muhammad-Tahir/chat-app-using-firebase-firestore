@@ -1,8 +1,6 @@
 import 'package:chat_app/models/user.dart';
 import 'package:chat_app/providers/chat_provider.dart';
 import 'package:chat_app/services/firebase_manager.dart';
-import 'package:chat_app/utils/common_functions.dart';
-import 'package:chat_app/utils/media_query.dart';
 import 'package:chat_app/views/chat_screen_page/chat_screen_widgets/custom_app_bar_tile.dart';
 import 'package:chat_app/views/chat_screen_page/chat_screen_widgets/message_bubble_tile_view.dart';
 import 'package:chat_app/views/chat_screen_page/chat_screen_widgets/write_message_textfield.dart';
@@ -20,7 +18,6 @@ class ChatScreenPageWidged extends StatefulWidget {
 class _ChatScreenPageWidgedState extends State<ChatScreenPageWidged> {
   @override
   void initState() {
-    // TODO: implement initState
     Provider.of<ChatProvider>(context, listen: false)
         .getMessagesFromServer(widget.reciverUser.uId);
     super.initState();
@@ -38,7 +35,6 @@ class _ChatScreenPageWidgedState extends State<ChatScreenPageWidged> {
         flexibleSpace: SafeArea(
           child: CustomAppBarTile(
             onTab: () {
-              print("Back");
               Navigator.pop(context);
             },
             receiverUser: widget.reciverUser,
@@ -78,7 +74,6 @@ class _ChatScreenPageWidgedState extends State<ChatScreenPageWidged> {
   }
 
   void tabOnSend() {
-    print("Message is Sending");
     String message = tfMessageController.text.trim();
     if (message.isNotEmpty) {
       Provider.of<ChatProvider>(context, listen: false)
@@ -88,8 +83,6 @@ class _ChatScreenPageWidgedState extends State<ChatScreenPageWidged> {
     }
     Provider.of<ChatProvider>(context, listen: false)
         .messages
-        .forEach((element) {
-      print(element.messageText);
-    });
+        .forEach((element) {});
   }
 }

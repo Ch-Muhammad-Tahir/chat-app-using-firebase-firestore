@@ -3,6 +3,7 @@ class ChatUser {
   String uId = "";
   String phoneNumber = "";
   String imageUrl = "";
+  bool isOnline = false;
   ChatUser();
   ChatUser.fromJosn(Map<String, dynamic> json) {
     if (json["userName"] is String || json["userName"] is int) {
@@ -16,6 +17,9 @@ class ChatUser {
     }
     if (json["imageUrl"] is String || json["imageUrl"] is int) {
       imageUrl = json["imageUrl"].toString();
+    }
+    if (json["isOnline"] is bool) {
+      isOnline = json["isOnline"];
     }
   }
 }

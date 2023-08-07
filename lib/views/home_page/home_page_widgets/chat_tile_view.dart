@@ -12,7 +12,7 @@ class ChatListTileView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      margin: EdgeInsets.all(5),
+      margin: const EdgeInsets.all(5),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
       child: Material(
         color: Colors.transparent,
@@ -43,8 +43,9 @@ class ChatListTileView extends StatelessWidget {
                           decoration: BoxDecoration(
                             border: Border.all(color: Colors.white, width: 3.5),
                             shape: BoxShape.circle,
-                            color: Colors.greenAccent
-                                .shade400, // Change the color as needed
+                            color: user.isOnline
+                                ? Colors.greenAccent.shade400
+                                : Colors.grey, // Change the color as needed
                           ),
                         ))
                   ]),
@@ -76,14 +77,28 @@ class ChatListTileView extends StatelessWidget {
                     ),
                   ),
                   const CustomSizedBox(width: 25),
-                  Align(
-                    alignment: Alignment.topCenter,
-                    child: Text(
-                      AppCommonStrings.time,
-                      style: TextStyle(
-                          fontSize:
-                              GetScreenSize.getScreenWidth(context) * 0.030),
-                    ),
+                  Column(
+                    children: [
+                      Text(AppCommonStrings.time,
+                          style: TextStyle(
+                              fontSize: GetScreenSize.getScreenWidth(context) *
+                                  0.030)),
+                      const CustomSizedBox(
+                        height: 8,
+                      ),
+                      const CircleAvatar(
+                        radius: 11,
+                        backgroundColor: Colors.deepPurple,
+                        child: Text(
+                          textAlign: TextAlign.center,
+                          "3",
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 15,
+                          ),
+                        ),
+                      ),
+                    ],
                   )
                 ],
               ),

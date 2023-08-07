@@ -30,19 +30,27 @@ class AuthenticationProvier extends ChangeNotifier {
 
   Future<void> loadUserData() async {
     print("Loading Function From Provier Start");
-    currentUserUid = FirebaseManager.currentUserUid;
+    currentUserUid = FirebaseManager.firebaseAuth.currentUser!.uid;
     FirebaseManager.getDataFromDatabase(collectionName: "users")
         .snapshots()
         .listen((event) {
       users.clear();
+      print(event.docs.length);
       for (final doc in event.docs) {
         print("Data : ${doc.data()}");
-        if (!doc.data().toString().contains(currentUserUid)) {
+
+        print(currentUserUid);
+        print(doc["uId"]);
+        if (doc["uId"] != currentUserUid)
+
+        //if (!doc.data().toString().contains(currentUserUid.toString()))
+        {
           print("This Is Inside of IF Statement ");
           print(doc.data());
           users.add(ChatUser.fromJosn(doc.data() as Map<String, dynamic>));
         }
       }
+      print("User Length : ${users.length}");
       notifyListeners();
     });
   }

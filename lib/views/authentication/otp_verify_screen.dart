@@ -1,4 +1,6 @@
 import 'package:chat_app/providers/authentication_provider.dart';
+import 'package:chat_app/utils/app_assets.dart';
+import 'package:chat_app/utils/app_strings.dart';
 import 'package:chat_app/utils/common_functions.dart';
 import 'package:chat_app/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
@@ -12,12 +14,25 @@ import '../get_user_detail_screen/get_user_detail_screen.dart';
 
 class OTPVerifyScreenWidget extends StatelessWidget {
   late String getOtp;
-  OTPVerifyScreenWidget({super.key});
 
+  OTPVerifyScreenWidget({super.key});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       body: Column(children: [
+        Image.asset(
+          AppAssets.loginIcon3,
+          height: GetScreenSize.getScreenHeight(context) * 0.35,
+          width: GetScreenSize.getScreenWidth(context) * 0.35,
+        ),
+        Text(
+          AppCommonStrings.otpVerificatoin,
+          style: TextStyle(
+            fontSize: GetScreenSize.getScreenWidth(context) * 0.09,
+          ),
+        ),
+        Text(AppCommonStrings.enterOTPCode),
         SizedBox(
           height: 300,
           width: double.infinity,
@@ -53,7 +68,8 @@ class OTPVerifyScreenWidget extends StatelessWidget {
                         builder: (BuildContext context) =>
                             GetUserDetailScreen()));
               } else {
-                AppCommonFunctions.showToast("Invalid OTP", context);
+                AppCommonFunctions.showToast(
+                    AppCommonStrings.invalidOTP, context);
               }
             });
           },

@@ -4,9 +4,7 @@ import 'package:chat_app/utils/app_strings.dart';
 import 'package:chat_app/utils/common_functions.dart';
 import 'package:chat_app/views/home_page/home_screen_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
-
 import '../../providers/authentication_provider.dart';
 import '../../utils/media_query.dart';
 import '../../widgets/custom_button.dart';
@@ -21,9 +19,10 @@ class GetUserDetailScreen extends StatelessWidget {
         Provider.of<AuthenticationProvier>(context, listen: true).pickedimg;
     return SafeArea(
       child: Scaffold(
+        resizeToAvoidBottomInset: false,
         body: Padding(
           padding: const EdgeInsets.all(30),
-          child: Column(children: [
+          child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
             GestureDetector(
               onTap: () async {
                 Provider.of<AuthenticationProvier>(context, listen: false)
@@ -44,13 +43,16 @@ class GetUserDetailScreen extends StatelessWidget {
             const SizedBox(
               height: 40,
             ),
+            Align(
+                alignment: Alignment.centerLeft,
+                child: Text(AppCommonStrings.fullNameText)),
             TextField(
               controller: controller,
               decoration:
                   InputDecoration(hintText: AppCommonStrings.enterNameTfHint),
             ),
             const SizedBox(
-              height: 40,
+              height: 150,
             ),
             CustomButton(
               color: Colors.deepPurple.shade700,
@@ -68,14 +70,15 @@ class GetUserDetailScreen extends StatelessWidget {
                           context,
                           MaterialPageRoute(
                               builder: (BuildContext context) =>
-                                  HomePageScreenWidget()));
+                                  const HomePageScreenWidget()));
                     } else {
                       AppCommonFunctions.showToast(
-                          "User Not Added On Firebase", context);
+                          AppCommonStrings.usreNoteAdded, context);
                     }
                   });
                 } else {
-                  AppCommonFunctions.showToast("Name Can't Be Empty", context);
+                  AppCommonFunctions.showToast(
+                      AppCommonStrings.nameNotEmpty, context);
                 }
               },
             )
