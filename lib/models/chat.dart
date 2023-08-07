@@ -4,6 +4,7 @@ class Message {
   String senderUid = "";
   String receiverUid = "";
   String messageText = "";
+  bool? isRead = false;
   Timestamp? timeStamp;
   Message.fromJson(Map<String, dynamic> json) {
     if (json["senderUid"] is String || json["senderUid"] is int) {
@@ -17,6 +18,9 @@ class Message {
     }
     if (json["timeStamp"] is Timestamp) {
       timeStamp = json["timeStamp"];
+    }
+    if (json["isRead"] is bool) {
+      isRead = json["isRead"];
     }
   }
 }

@@ -1,4 +1,5 @@
 import 'package:chat_app/providers/authentication_provider.dart';
+import 'package:chat_app/providers/chat_provider.dart';
 import 'package:chat_app/services/firebase_manager.dart';
 import 'package:chat_app/utils/common_functions.dart';
 import 'package:chat_app/utils/media_query.dart';

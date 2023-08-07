@@ -35,18 +35,18 @@ class AuthenticationProvier extends ChangeNotifier {
         .snapshots()
         .listen((event) {
       users.clear();
-      print(event.docs.length);
+      //print(event.docs.length);
       for (final doc in event.docs) {
-        print("Data : ${doc.data()}");
+        // print("Data : ${doc.data()}");
 
-        print(currentUserUid);
-        print(doc["uId"]);
+        //  print(currentUserUid);
+        //print(doc["uId"]);
         if (doc["uId"] != currentUserUid)
 
         //if (!doc.data().toString().contains(currentUserUid.toString()))
         {
-          print("This Is Inside of IF Statement ");
-          print(doc.data());
+          //   print("This Is Inside of IF Statement ");
+          // print(doc.data());
           users.add(ChatUser.fromJosn(doc.data() as Map<String, dynamic>));
         }
       }

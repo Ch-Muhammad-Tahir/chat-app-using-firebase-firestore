@@ -87,6 +87,7 @@ class FirebaseManager {
       "senderUid": currentUserUid,
       "reciverUid": reciverId,
       "messageText": message,
+      "isRead": false,
       "timeStamp": FieldValue.serverTimestamp(),
     });
   }
@@ -121,5 +122,11 @@ class FirebaseManager {
         .doc(chatRoomId)
         .collection("messages");
     return messagesCollectionReference;
+  }
+
+  static Future<DocumentReference<Map<String, dynamic>>> getSpecificUserData(
+      String uId) async {
+    var doc = await FirebaseFirestore.instance.collection("users").doc(uId);
+    return doc;
   }
 }

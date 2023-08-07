@@ -19,6 +19,8 @@ class _ChatScreenPageWidgedState extends State<ChatScreenPageWidged> {
   @override
   void initState() {
     Provider.of<ChatProvider>(context, listen: false)
+        .getStatusFromDatabase(widget.reciverUser.uId);
+    Provider.of<ChatProvider>(context, listen: false)
         .getMessagesFromServer(widget.reciverUser.uId);
     super.initState();
   }
