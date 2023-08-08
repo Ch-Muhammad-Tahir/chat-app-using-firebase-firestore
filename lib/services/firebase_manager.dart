@@ -58,7 +58,8 @@ class FirebaseManager {
       "uId": currentUserUid,
       "phoneNumber": userPhoneNumber,
       "imageUrl": imgPath,
-      "isOnline": true
+      "isOnline": true,
+      "lastMessage": ""
     });
     if (collection.doc(currentUserUid).id == currentUserUid) {
       return true;
@@ -122,6 +123,22 @@ class FirebaseManager {
         .doc(chatRoomId)
         .collection("messages");
     return messagesCollectionReference;
+  }
+
+  static Map<String, dynamic>? getLastMessage(String chatRoomId) {
+    Map<String, dynamic>? recentMessage;
+    final messagesRef = FirebaseFirestore.instance
+        .collection('chat')
+        .doc(chatRoomId)
+        .collection("messages")
+        .orderBy('timestamp', descending: true)
+        .limit(1)
+        .snapshots() // realtime update
+        .listen((querySnapshot) {
+      final lastMessage = querySnapshot.docs.first.data();
+      recentMessage = lastMessage;
+    });
+    return recentMessage;
   }
 
   static Future<DocumentReference<Map<String, dynamic>>> getSpecificUserData(

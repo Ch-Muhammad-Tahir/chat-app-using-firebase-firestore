@@ -4,6 +4,7 @@ class ChatUser {
   String phoneNumber = "";
   String imageUrl = "";
   bool isOnline = false;
+  String? lastMessage = "";
   ChatUser();
   ChatUser.fromJosn(Map<String, dynamic> json) {
     if (json["userName"] is String || json["userName"] is int) {
@@ -20,6 +21,9 @@ class ChatUser {
     }
     if (json["isOnline"] is bool) {
       isOnline = json["isOnline"];
+    }
+    if (json["lastMessage"] is bool) {
+      lastMessage = json["lastMessage"];
     }
   }
 }
